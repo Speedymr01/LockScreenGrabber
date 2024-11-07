@@ -4,7 +4,6 @@ Version 2.3
 **************************************************************************************************************************************************************************'''
 import os
 import shutil
-from shutil import SameFileError, copytree, ignore_patterns
 from PIL import *
 import logging
 import cv2
@@ -12,7 +11,7 @@ import datetime
 from datetime import *
 import glob
 import os.path
-from funcs import ini_log, log_fini, enter_to_fini
+from funcs import ini_log, log_fini
 import os
 
 def create_folder_if_not_exists(folder_path):
@@ -82,8 +81,6 @@ def copy():
     copy_log = str('copied ' + str(coppied_files) + ' files. Found ' + str(not_coppied_files) + ' reoccuring files. coppied ' + str(coppied_files) + ' out of ' + str(total_files) + '.')
     logging.info(copy_log)
 
-
-
 def file_count():
     files = 0
     for path in os.scandir(file_path):
@@ -92,8 +89,6 @@ def file_count():
     log_count_files = 'There are ' + str(files) + ' images in total.'
     logging.info(log_count_files)
     print(log_count_files)
-
-
 
 def rename():
     errors = 0
@@ -115,8 +110,6 @@ def rename():
     if errors < 1:        
         logging.info('All files successfully re-named.')
 
-
-
 def check_size():
     for filename in os.listdir(file_path):
         filename = file_path + filename
@@ -127,8 +120,6 @@ def check_size():
             size_log = str(str(filename) + ' Deleted (icon)')
             print(size_log)
             logging.info(size_log)
-
-
 
 def check_orientation():
     for filename in os.listdir(file_path):
@@ -145,13 +136,8 @@ def check_orientation():
             orientation_landscape_log = filename + '      is landscape'
             logging.info(orientation_landscape_log)
 
-
-
-
 copy()
-#rename()
 check_size()
 check_orientation()
 file_count()
 log_fini()
-#enter_to_fini()
