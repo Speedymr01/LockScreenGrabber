@@ -1,1 +1,1 @@
-pip install pillow opencv-python
+py -m pip install pillow opencv-python
